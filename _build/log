@@ -1,5 +1,150 @@
-# dune init proj 99_problems
+# dune fmt
 # OCAMLPARAM: unset
 # Shared cache: disabled
 # Workspace root: /home/edo/Projects/99_problems
 # Auto-detected concurrency: 4
+$ /home/edo/.opam/default/bin/ocamlc.opt -config > /tmp/dune_ef4070_output
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Dev
+#  ; merlin = true
+#  ; for_host = None
+#  ; fdo_target_exe = None
+#  ; build_dir = In_build_dir "default"
+#  ; ocaml_bin = External "/home/edo/.opam/default/bin"
+#  ; ocaml = Ok External "/home/edo/.opam/default/bin/ocaml"
+#  ; ocamlc = External "/home/edo/.opam/default/bin/ocamlc.opt"
+#  ; ocamlopt = Ok External "/home/edo/.opam/default/bin/ocamlopt.opt"
+#  ; ocamldep = Ok External "/home/edo/.opam/default/bin/ocamldep.opt"
+#  ; ocamlmklib = Ok External "/home/edo/.opam/default/bin/ocamlmklib.opt"
+#  ; env =
+#      map
+#        { "DUNE_OCAML_HARDCODED" :
+#            "/home/edo/.opam/default/lib/ocaml:/home/edo/.opam/default/lib"
+#        ; "DUNE_OCAML_STDLIB" : "/home/edo/.opam/default/lib/ocaml"
+#        ; "DUNE_SOURCEROOT" : "/home/edo/Projects/99_problems"
+#        ; "INSIDE_DUNE" : "/home/edo/Projects/99_problems/_build/default"
+#        ; "OCAMLFIND_IGNORE_DUPS_IN" :
+#            "/home/edo/Projects/99_problems/_build/install/default/lib"
+#        ; "OCAMLPATH" :
+#            "/home/edo/Projects/99_problems/_build/install/default/lib"
+#        ; "OCAMLTOP_INCLUDE_PATH" :
+#            "/home/edo/Projects/99_problems/_build/install/default/lib/toplevel"
+#        ; "OCAML_COLOR" : "always"
+#        ; "OPAMCOLOR" : "always"
+#        }
+#  ; findlib_paths =
+#      [ External "/home/edo/.opam/default/lib/ocaml"
+#      ; External "/home/edo/.opam/default/lib"
+#      ]
+#  ; natdynlink_supported = true
+#  ; supports_shared_libraries = true
+#  ; ocaml_config =
+#      { version = "5.0.0"
+#      ; standard_library_default = "/home/edo/.opam/default/lib/ocaml"
+#      ; standard_library = "/home/edo/.opam/default/lib/ocaml"
+#      ; standard_runtime = "the_standard_runtime_variable_was_deleted"
+#      ; ccomp_type = "cc"
+#      ; c_compiler = "gcc"
+#      ; ocamlc_cflags =
+#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-pthread"; "-fPIC" ]
+#      ; ocamlc_cppflags = [ "-D_FILE_OFFSET_BITS=64" ]
+#      ; ocamlopt_cflags =
+#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-pthread"; "-fPIC" ]
+#      ; ocamlopt_cppflags = [ "-D_FILE_OFFSET_BITS=64" ]
+#      ; bytecomp_c_compiler =
+#          [ "gcc"
+#          ; "-O2"
+#          ; "-fno-strict-aliasing"
+#          ; "-fwrapv"
+#          ; "-pthread"
+#          ; "-fPIC"
+#          ; "-D_FILE_OFFSET_BITS=64"
+#          ]
+#      ; bytecomp_c_libraries = [ "-lm"; "-lpthread" ]
+#      ; native_c_compiler =
+#          [ "gcc"
+#          ; "-O2"
+#          ; "-fno-strict-aliasing"
+#          ; "-fwrapv"
+#          ; "-pthread"
+#          ; "-fPIC"
+#          ; "-D_FILE_OFFSET_BITS=64"
+#          ]
+#      ; native_c_libraries = [ "-lm"; "-lpthread" ]
+#      ; native_pack_linker = [ "ld"; "-r"; "-o" ]
+#      ; cc_profile = []
+#      ; architecture = "amd64"
+#      ; model = "default"
+#      ; int_size = 63
+#      ; word_size = 64
+#      ; system = "linux"
+#      ; asm = [ "as" ]
+#      ; asm_cfi_supported = true
+#      ; with_frame_pointers = false
+#      ; ext_exe = ""
+#      ; ext_obj = ".o"
+#      ; ext_asm = ".s"
+#      ; ext_lib = ".a"
+#      ; ext_dll = ".so"
+#      ; os_type = "Unix"
+#      ; default_executable_name = "a.out"
+#      ; systhread_supported = true
+#      ; host = "x86_64-pc-linux-gnu"
+#      ; target = "x86_64-pc-linux-gnu"
+#      ; profiling = false
+#      ; flambda = false
+#      ; spacetime = false
+#      ; safe_string = true
+#      ; exec_magic_number = "Caml1999X032"
+#      ; cmi_magic_number = "Caml1999I032"
+#      ; cmo_magic_number = "Caml1999O032"
+#      ; cma_magic_number = "Caml1999A032"
+#      ; cmx_magic_number = "Caml1999Y032"
+#      ; cmxa_magic_number = "Caml1999Z032"
+#      ; ast_impl_magic_number = "Caml1999M032"
+#      ; ast_intf_magic_number = "Caml1999N032"
+#      ; cmxs_magic_number = "Caml1999D032"
+#      ; cmt_magic_number = "Caml1999T032"
+#      ; natdynlink_supported = true
+#      ; supports_shared_libraries = true
+#      ; windows_unicode = false
+#      }
+#  }
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlformat --impl bin/main.ml) > _build/default/bin/.formatted/main.ml
+$ /usr/bin/git --no-pager diff --no-index --color=always -u _build/default/bin/main.ml _build/default/bin/.formatted/main.ml
+> diff --git a/_build/default/bin/main.ml b/_build/default/bin/.formatted/main.ml
+> index 37de7f3..20c9904 100644
+> --- a/_build/default/bin/main.ml
+> +++ b/_build/default/bin/.formatted/main.ml
+> @@ -46,11 +46,10 @@ let rec flatten l =
+>  
+>  (* Problem 8 *)
+>  let rec compress = function
+> -    | [] -> []
+> -    | [h] -> [h]
+> -    | h1::h2::t ->
+> -            if h1 = h2 then compress (h2::t)
+> -            else h1 :: (compress (h2::t))
+> +  | [] -> []
+> +  | [ h ] -> [ h ]
+> +  | h1 :: h2 :: t -> if h1 = h2 then compress (h2 :: t) else h1 :: compress (h2 :: t)
+> +;;
+>  
+>  let () =
+>    let _ = assert (last [ "a"; "b"; "c"; "d" ] = Some "d") in
+> @@ -76,7 +75,10 @@ let () =
+>        flatten [ One "a"; Many [ One "b"; Many [ One "c"; One "d" ]; One "e" ] ]
+>        = [ "a"; "b"; "c"; "d"; "e" ])
+>    in
+> -  let _ = assert (compress ["a"; "a"; "a"; "a"; "b"; "c"; "c"; "a"; "a"; "d"; "e"; "e"; "e"; "e"] = ["a"; "b"; "c"; "a"; "d"; "e"]
+> -) in
+> +  let _ =
+> +    assert (
+> +      compress [ "a"; "a"; "a"; "a"; "b"; "c"; "c"; "a"; "a"; "d"; "e"; "e"; "e"; "e" ]
+> +      = [ "a"; "b"; "c"; "a"; "d"; "e" ])
+> +  in
+>    ()
+>  ;;
+[1]

@@ -1,2 +1,2 @@
 (test
- (name 99_problems))
+ (name ocaml_problems))

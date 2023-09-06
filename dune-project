@@ -1,26 +1,22 @@
 (lang dune 3.10)
 
-(name 99_problems)
+(name ocaml_problems)
 
 (generate_opam_files true)
 
 (source
- (github username/reponame))
+ (github b72u68/99-problems))
 
-(authors "Author Name")
+(authors "My Dinh")
 
-(maintainers "Maintainer Name")
-
-(license LICENSE)
-
-(documentation https://url/to/documentation)
+(maintainers "My Dinh")
 
 (package
- (name 99_problems)
- (synopsis "A short synopsis")
- (description "A longer description")
+ (name ocaml_problems)
+ (synopsis "99 OCaml problems")
+ (description "99 OCaml problems from https://ocaml.org/problems")
  (depends ocaml dune)
  (tags
-  (topics "to describe" your project)))
+  (topics "ocaml" "exercises")))
 
 ; See the complete stanza docs at https://dune.readthedocs.io/en/stable/dune-files.html#dune-project
