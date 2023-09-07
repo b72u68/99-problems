@@ -1,9 +1,9 @@
-# dune fmt
+# dune exec ocaml_problems -w
 # OCAMLPARAM: unset
 # Shared cache: disabled
 # Workspace root: /home/edo/Projects/99_problems
 # Auto-detected concurrency: 4
-$ /home/edo/.opam/default/bin/ocamlc.opt -config > /tmp/dune_ef4070_output
+$ /home/edo/.opam/default/bin/ocamlc.opt -config > /tmp/dune_a66a77_output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -112,39 +112,1596 @@ $ /home/edo/.opam/default/bin/ocamlc.opt -config > /tmp/dune_ef4070_output
 #      ; windows_unicode = false
 #      }
 #  }
-$ (cd _build/default && /home/edo/.opam/default/bin/ocamlformat --impl bin/main.ml) > _build/default/bin/.formatted/main.ml
-$ /usr/bin/git --no-pager diff --no-index --color=always -u _build/default/bin/main.ml _build/default/bin/.formatted/main.ml
-> diff --git a/_build/default/bin/main.ml b/_build/default/bin/.formatted/main.ml
-> index 37de7f3..20c9904 100644
-> --- a/_build/default/bin/main.ml
-> +++ b/_build/default/bin/.formatted/main.ml
-> @@ -46,11 +46,10 @@ let rec flatten l =
->  
->  (* Problem 8 *)
->  let rec compress = function
-> -    | [] -> []
-> -    | [h] -> [h]
-> -    | h1::h2::t ->
-> -            if h1 = h2 then compress (h2::t)
-> -            else h1 :: (compress (h2::t))
-> +  | [] -> []
-> +  | [ h ] -> [ h ]
-> +  | h1 :: h2 :: t -> if h1 = h2 then compress (h2 :: t) else h1 :: compress (h2 :: t)
-> +;;
->  
->  let () =
->    let _ = assert (last [ "a"; "b"; "c"; "d" ] = Some "d") in
-> @@ -76,7 +75,10 @@ let () =
->        flatten [ One "a"; Many [ One "b"; Many [ One "c"; One "d" ]; One "e" ] ]
->        = [ "a"; "b"; "c"; "d"; "e" ])
->    in
-> -  let _ = assert (compress ["a"; "a"; "a"; "a"; "b"; "c"; "c"; "a"; "a"; "d"; "e"; "e"; "e"; "e"] = ["a"; "b"; "c"; "a"; "d"; "e"]
-> -) in
-> +  let _ =
-> +    assert (
-> +      compress [ "a"; "a"; "a"; "a"; "b"; "c"; "c"; "a"; "a"; "d"; "e"; "e"; "e"; "e" ]
-> +      = [ "a"; "b"; "c"; "a"; "d"; "e" ])
-> +  in
->    ()
->  ;;
-[1]
+# Attempted to add watch to non-existent directory /snap.
+# Attempted to add watch to non-existent directory
+# /home/edo/Projects/99_problems/edo/.local.
+# Attempted to add watch to non-existent directory /snap.
+# Attempted to add watch to non-existent directory
+# /home/edo/Projects/99_problems/edo/.local.
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 106, characters 0-3:
+> 106 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 159, characters 0-2:
+> 159 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 159, characters 0-2:
+> 159 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 107, characters 0-3:
+> 107 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 159, characters 0-2:
+> 159 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 104, characters 4-10:
+> 104 | let decode list =
+>           ^^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value decode.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 104, characters 4-10:
+> 104 | let decode list =
+>           ^^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value decode.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 109, characters 33-34:
+> 109 |       | (One x') :: t -> if x' = x then (Many (2, x)) :: t else (One x) :: acc
+>                                        ^
+> Error: This expression has type 'a rle list
+>        but an expression was expected of type 'a
+>        The type variable 'a occurs inside 'a rle list
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 109, characters 4-5:
+> 109 |     []
+>           ^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 110, characters 4-5:
+> 110 |     []
+>           ^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 113, characters 0-3:
+> 113 | let () =
+>       ^^^
+> Error: Syntax error: ')' expected
+> File "bin/main.ml", line 106, characters 4-5:
+> 106 |     (fun x acc ->
+>           ^
+>   This '(' might be unmatched
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 113, characters 0-3:
+> 113 | let () =
+>       ^^^
+> Error: Syntax error: ')' expected
+> File "bin/main.ml", line 106, characters 4-5:
+> 106 |     (fun x acc ->
+>           ^
+>   This '(' might be unmatched
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 113, characters 0-3:
+> 113 | let () =
+>       ^^^
+> Error: Syntax error: ')' expected
+> File "bin/main.ml", line 106, characters 4-5:
+> 106 |     (fun x acc ->
+>           ^
+>   This '(' might be unmatched
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 160, characters 0-2:
+> 160 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 108, characters 0-3:
+> 108 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 108, characters 0-3:
+> 108 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 108, characters 0-3:
+> 108 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 108, characters 0-3:
+> 108 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 161, characters 0-2:
+> 161 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 161, characters 0-2:
+> 161 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 162, characters 0-2:
+> 162 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 109, characters 0-3:
+> 109 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 110, characters 0-3:
+> 110 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 110, characters 0-3:
+> 110 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 110, characters 0-3:
+> 110 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 111, characters 0-3:
+> 111 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 164, characters 0-2:
+> 164 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 106, characters 8-9:
+> 106 |         | [] -> []
+>               ^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 163, characters 0-2:
+> 163 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 163, characters 0-2:
+> 163 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 163, characters 0-2:
+> 163 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 110, characters 0-3:
+> 110 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 111, characters 0-3:
+> 111 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 164, characters 0-2:
+> 164 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 111, characters 0-3:
+> 111 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 111, characters 0-3:
+> 111 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 111, characters 0-3:
+> 111 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 111, characters 0-3:
+> 111 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 111, characters 0-3:
+> 111 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 111, characters 0-3:
+> 111 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 111, characters 0-3:
+> 111 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 164, characters 0-2:
+> 164 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 111, characters 0-3:
+> 111 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 164, characters 0-2:
+> 164 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 166, characters 0-2:
+> 166 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 114, characters 0-3:
+> 114 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 113, characters 0-3:
+> 113 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 166, characters 0-2:
+> 166 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 167, characters 0-2:
+> 167 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 114, characters 0-3:
+> 114 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 114, characters 0-3:
+> 114 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 114, characters 0-3:
+> 114 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 114, characters 0-3:
+> 114 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 168, characters 0-2:
+> 168 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 104, characters 4-10:
+> 104 | let decode =
+>           ^^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value decode.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 105, characters 4-7:
+> 105 |     let rec aux = function
+>           ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 105, characters 4-7:
+> 105 |     let rec aux = function
+>           ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 104, characters 4-10:
+> 104 | let decode =
+>           ^^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value decode.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 104, characters 4-10:
+> 104 | let decode list =
+>           ^^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value decode.
+> File "bin/main.ml", line 104, characters 11-15:
+> 104 | let decode list =
+>                  ^^^^
+> Error (warning 27 [unused-var-strict]): unused variable list.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 104, characters 4-10:
+> 104 | let decode list =
+>           ^^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value decode.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 168, characters 0-2:
+> 168 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 104, characters 4-10:
+> 104 | let decode list =
+>           ^^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value decode.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 104, characters 4-10:
+> 104 | let decode list =
+>           ^^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value decode.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 169, characters 0-2:
+> 169 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 117, characters 0-3:
+> 117 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 117, characters 0-3:
+> 117 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 171, characters 0-2:
+> 171 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 118, characters 0-3:
+> 118 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 118, characters 0-3:
+> 118 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 118, characters 0-3:
+> 118 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 118, characters 0-3:
+> 118 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 115, characters 19-24:
+> 115 |     let rec aux (x count)
+>                          ^^^^^
+> Error: Syntax error: ')' expected
+> File "bin/main.ml", line 115, characters 16-17:
+> 115 |     let rec aux (x count)
+>                       ^
+>   This '(' might be unmatched
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 118, characters 0-3:
+> 118 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 118, characters 0-3:
+> 118 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 172, characters 0-2:
+> 172 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 173, characters 0-2:
+> 173 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 173, characters 0-2:
+> 173 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 173, characters 0-2:
+> 173 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 119, characters 0-3:
+> 119 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 119, characters 0-3:
+> 119 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 120, characters 0-3:
+> 120 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 120, characters 0-3:
+> 120 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 121, characters 0-3:
+> 121 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 121, characters 0-3:
+> 121 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 122, characters 0-3:
+> 122 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 176, characters 0-2:
+> 176 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 123, characters 0-3:
+> 123 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 123, characters 0-3:
+> 123 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 123, characters 0-3:
+> 123 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 123, characters 0-3:
+> 123 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 179, characters 0-2:
+> 179 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 178, characters 0-2:
+> 178 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 125, characters 0-3:
+> 125 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 125, characters 0-3:
+> 125 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 125, characters 0-3:
+> 125 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 126, characters 0-3:
+> 126 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 181, characters 0-2:
+> 181 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 114, characters 4-14:
+> 114 | let encode_dir =
+>           ^^^^^^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value encode_dir.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 114, characters 4-14:
+> 114 | let encode_dir =
+>           ^^^^^^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value encode_dir.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 183, characters 10-16:
+> 183 |       = [ 4, "a"; 1, "b"; 2, "c"; 2, "a"; 1, "d"; 4, "e" ])
+>                 ^^^^^^
+> Error: This expression has type 'a * 'b
+>        but an expression was expected of type string rle
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 114, characters 4-14:
+> 114 | let encode_dir =
+>           ^^^^^^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value encode_dir.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 129, characters 0-3:
+> 129 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 126, characters 4-13:
+> 126 | let duplicate = List.fold_right (fun x acc -> x::x::acc) []
+>           ^^^^^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value duplicate.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 126, characters 57-61:
+> 126 | let duplicate = List.fold_right (fun x acc -> x::x::acc) list []
+>                                                                ^^^^
+> Error: Unbound value list
+> Hint: Did you mean last?
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 126, characters 4-13:
+> 126 | let duplicate list = List.fold_right (fun x acc -> x::x::acc) list []
+>           ^^^^^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value duplicate.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 184, characters 18-19:
+> 184 |   let _ = (assert )
+>                         ^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 184, characters 18-19:
+> 184 |   let _ = (assert )
+>                         ^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 184, characters 18-19:
+> 184 |   let _ = (assert )
+>                         ^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 184, characters 25-26:
+> 184 |   let _ = assert (assert )in
+>                                ^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 184, characters 25-26:
+> 184 |   let _ = assert (assert ) in
+>                                ^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 184, characters 17-19:
+> 184 |   let _ = assert () in
+>                        ^^
+> Error: This variant expression is expected to have type bool
+>          because it is in the condition of an assertion
+>        There is no constructor () within type bool
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 184, characters 56-57:
+> 184 |   let _ = assert (duplicate ["a"; "b"; "c"; "c"; "d"] = ) in
+>                                                               ^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 106, characters 28-31:
+> 106 |         | (One x)::t -> x::(aux t)
+>                                   ^^^
+> Error: Unbound value aux
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 106, characters 28-31:
+> 106 |         | (One x)::t -> x::(aux t)
+>                                   ^^^
+> Error: Unbound value aux
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 106, characters 24-27:
+> 106 |     | (One x)::t -> x::(aux t)
+>                               ^^^
+> Error: Unbound value aux
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 108, characters 26-29:
+> 108 |             if c = 0 then aux t
+>                                 ^^^
+> Error: Unbound value aux
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 125, characters 0-3:
+> 125 | let duplic
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 125, characters 0-3:
+> 125 | let dupl
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 114, characters 4-7:
+> 114 |     let rec aux count = function
+>           ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 114, characters 4-7:
+> 114 |     let rec aux count = function
+>           ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 113, characters 8-17:
+> 113 |     let rle_count count x = if count = 1 then One x else Many (count, x) in
+>               ^^^^^^^^^
+> Error (warning 26 [unused-var]): unused variable rle_count.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 120, characters 38-46:
+> 120 |                     if count = 0 then (One h1) :: (aux 0 t)
+>                                             ^^^^^^^^
+> Error: This expression should not be a constructor, the expected type is
+>        'a -> 'a rle
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 120, characters 20-22:
+> 120 |                     if count = 0 then (One h1) :: (aux 0 t)
+>                           ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 120, characters 20-22:
+> 120 |                     if count = 0 then (One h1) :: (aux 0 t)
+>                           ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 126, characters 4-13:
+> 126 | let replicate list n = List.fold_right
+>           ^^^^^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value replicate.
+> File "bin/main.ml", line 126, characters 14-18:
+> 126 | let replicate list n = List.fold_right
+>                     ^^^^
+> Error (warning 27 [unused-var-strict]): unused variable list.
+> File "bin/main.ml", line 126, characters 19-20:
+> 126 | let replicate list n = List.fold_right
+>                          ^
+> Error (warning 27 [unused-var-strict]): unused variable n.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 126, characters 4-13:
+> 126 | let replicate list n = List.fold_right list
+>           ^^^^^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value replicate.
+> File "bin/main.ml", line 126, characters 19-20:
+> 126 | let replicate list n = List.fold_right list
+>                          ^
+> Error (warning 27 [unused-var-strict]): unused variable n.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 126, characters 39-41:
+> 126 | let replicate list n = List.fold_right ()list
+>                                              ^^
+> Error: This expression should not be a unit literal, the expected type is
+>        'a -> 'b -> 'b
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 126, characters 39-41:
+> 126 | let replicate list n = List.fold_right () list []
+>                                              ^^
+> Error: This expression should not be a unit literal, the expected type is
+>        'a -> 'b -> 'b
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 126, characters 52-53:
+> 126 | let replicate list n = List.fold_right (fun x acc ->) list []
+>                                                           ^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 126, characters 53-54:
+> 126 | let replicate list n = List.fold_right (fun x acc -> ) list ([])
+>                                                            ^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 126, characters 53-54:
+> 126 | let replicate list n = List.fold_right (fun x acc -> ) list ([]
+>                                                            ^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 126, characters 53-54:
+> 126 | let replicate list n = List.fold_right (fun x acc -> ) list []
+>                                                            ^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 127, characters 34-35:
+> 127 |     List.fold_right (fun x acc -> ) list []
+>                                         ^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 128, characters 9-19:
+> 128 |     List.fold_right (fun x acc -> ) list []
+>                ^^^^^^^^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 128, characters 9-19:
+> 128 |     List.fold_right (fun x acc -> ) list []
+>                ^^^^^^^^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 128, characters 34-35:
+> 128 |     List.fold_right (fun x acc -> ) list []
+>                                         ^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 128, characters 34-35:
+> 128 |     List.fold_right (fun x acc -> ) list []
+>                                         ^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 130, characters 0-3:
+> 130 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 130, characters 0-3:
+> 130 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 130, characters 0-3:
+> 130 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 130, characters 0-3:
+> 130 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 126, characters 4-13:
+> 126 | let replicate list n =
+>           ^^^^^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value replicate.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 129, characters 0-2:
+> 129 | in
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 126, characters 4-13:
+> 126 | let replicate list n =
+>           ^^^^^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value replicate.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 126, characters 4-13:
+> 126 | let replicate list n =
+>           ^^^^^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value replicate.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 187, characters 17-19:
+> 187 |   let _ = assert () in
+>                        ^^
+> Error: This variant expression is expected to have type bool
+>          because it is in the condition of an assertion
+>        There is no constructor () within type bool
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 187, characters 49-52:
+> 187 |   let _ = assert (replicate ["a"; "b"; "c"] 3 = ["a"; "a"; "a"; "b"; "b"; "b"; "c"; "c"; "c"]) in
+>                                                        ^^^
+> Error: This expression has type string but an expression was expected of type
+>          string list
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 134, characters 0-3:
+> 134 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 134, characters 0-3:
+> 134 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 192, characters 0-2:
+> 192 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 135, characters 0-3:
+> 135 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 135, characters 0-3:
+> 135 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 135, characters 0-3:
+> 135 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 135, characters 0-3:
+> 135 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 135, characters 0-3:
+> 135 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 135, characters 0-3:
+> 135 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 193, characters 0-2:
+> 193 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 194, characters 0-2:
+> 194 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 194, characters 0-2:
+> 194 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 194, characters 0-2:
+> 194 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 194, characters 0-2:
+> 194 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 194, characters 0-2:
+> 194 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 133, characters 8-9:
+> 133 |         | [] -> []
+>               ^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 133, characters 8-9:
+> 133 |         | [] -> []
+>               ^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 133, characters 8-9:
+> 133 |         | [] -> []
+>               ^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 138, characters 0-3:
+> 138 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 138, characters 0-3:
+> 138 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 138, characters 0-3:
+> 138 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 196, characters 0-2:
+> 196 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 138, characters 0-3:
+> 138 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 139, characters 0-3:
+> 139 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 197, characters 0-2:
+> 197 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 139, characters 0-3:
+> 139 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 198, characters 0-2:
+> 198 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 131, characters 4-8:
+> 131 | let drop list n =
+>           ^^^^
+> Error (warning 32 [unused-value-declaration]): unused value drop.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 131, characters 4-8:
+> 131 | let drop list n =
+>           ^^^^
+> Error (warning 32 [unused-value-declaration]): unused value drop.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 131, characters 4-8:
+> 131 | let drop list n =
+>           ^^^^
+> Error (warning 32 [unused-value-declaration]): unused value drop.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 132, characters 4-8:
+> 132 | let drop list n =
+>           ^^^^
+> Error (warning 32 [unused-value-declaration]): unused value drop.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 132, characters 4-8:
+> 132 | let drop list n =
+>           ^^^^
+> Error (warning 32 [unused-value-declaration]): unused value drop.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 133, characters 4-8:
+> 133 | let drop list n =
+>           ^^^^
+> Error (warning 32 [unused-value-declaration]): unused value drop.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 133, characters 4-8:
+> 133 | let drop list n =
+>           ^^^^
+> Error (warning 32 [unused-value-declaration]): unused value drop.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 199, characters 17-19:
+> 199 |   let _ = assert () in
+>                        ^^
+> Error: This variant expression is expected to have type bool
+>          because it is in the condition of an assertion
+>        There is no constructor () within type bool
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 144, characters 0-3:
+> 144 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 203, characters 0-2:
+> 203 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 203, characters 0-2:
+> 203 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 203, characters 0-2:
+> 203 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 141, characters 0-3:
+> 141 | let rec split list n =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 142, characters 0-3:
+> 142 | let rec split list n =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 203, characters 0-2:
+> 203 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 203, characters 0-2:
+> 203 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 204, characters 0-2:
+> 204 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 204, characters 0-2:
+> 204 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 203, characters 0-2:
+> 203 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 204, characters 0-2:
+> 204 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 146, characters 0-3:
+> 146 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", lines 142-143, characters 4-20:
+> 142 | ....match list with
+> 143 |     | [] -> ([], [])
+> Error (warning 8 [partial-match]): this pattern-matching is not exhaustive.
+> Here is an example of a case that is not matched:
+> _::_
+> File "bin/main.ml", line 141, characters 8-13:
+> 141 | let rec split list n =
+>               ^^^^^
+> Error (warning 39 [unused-rec-flag]): unused rec flag.
+> File "bin/main.ml", line 141, characters 8-13:
+> 141 | let rec split list n =
+>               ^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value split.
+> File "bin/main.ml", line 141, characters 19-20:
+> 141 | let rec split list n =
+>                          ^
+> Error (warning 27 [unused-var-strict]): unused variable n.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 147, characters 0-3:
+> 147 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 206, characters 0-2:
+> 206 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 143, characters 4-9:
+> 143 |     match list with
+>           ^^^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 207, characters 0-2:
+> 207 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 206, characters 0-2:
+> 206 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 206, characters 0-2:
+> 206 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 206, characters 0-2:
+> 206 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 207, characters 0-2:
+> 207 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 206, characters 0-2:
+> 206 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 203, characters 0-2:
+> 203 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 203, characters 0-2:
+> 203 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 145, characters 0-3:
+> 145 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 145, characters 0-3:
+> 145 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 146, characters 0-3:
+> 146 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 204, characters 0-2:
+> 204 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 145, characters 0-3:
+> 145 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 145, characters 0-3:
+> 145 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 146, characters 0-3:
+> 146 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 146, characters 0-3:
+> 146 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 146, characters 0-3:
+> 146 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 146, characters 0-3:
+> 146 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 146, characters 0-3:
+> 146 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 146, characters 0-3:
+> 146 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 147, characters 0-3:
+> 147 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 206, characters 0-2:
+> 206 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 206, characters 0-2:
+> 206 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 206, characters 0-2:
+> 206 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 147, characters 0-3:
+> 147 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 148, characters 0-3:
+> 148 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 145, characters 17-18:
+> 145 |         | (h::t, )
+>                        ^
+> Error: Syntax error: pattern expected.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 145, characters 17-18:
+> 145 |         | (h::t, )
+>                        ^
+> Error: Syntax error: pattern expected.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 145, characters 17-18:
+> 145 |         | (h::t, )
+>                        ^
+> Error: Syntax error: pattern expected.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 145, characters 17-18:
+> 145 |         | (h::t, )
+>                        ^
+> Error: Syntax error: pattern expected.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 145, characters 17-18:
+> 145 |         | (h::t, )
+>                        ^
+> Error: Syntax error: pattern expected.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 207, characters 0-2:
+> 207 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 148, characters 0-3:
+> 148 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 148, characters 0-3:
+> 148 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 148, characters 0-3:
+> 148 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 145, characters 39-40:
+> 145 |         | (h::t, n) -> aux (acc @ [h], )
+>                                              ^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 148, characters 0-3:
+> 148 | let () =
+>       ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 208, characters 0-2:
+> 208 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 141, characters 4-9:
+> 141 | let split list n =
+>           ^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value split.
+> File "bin/main.ml", line 141, characters 10-14:
+> 141 | let split list n =
+>                 ^^^^
+> Error (warning 27 [unused-var-strict]): unused variable list.
+> File "bin/main.ml", line 141, characters 15-16:
+> 141 | let split list n =
+>                      ^
+> Error (warning 27 [unused-var-strict]): unused variable n.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 141, characters 4-9:
+> 141 | let split list n =
+>           ^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value split.
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 207, characters 20-23:
+> 207 |   let _ = assert () iun
+>                           ^^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 207, characters 17-19:
+> 207 |   let _ = assert () in
+>                        ^^
+> Error: This variant expression is expected to have type bool
+>          because it is in the condition of an assertion
+>        There is no constructor () within type bool
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
