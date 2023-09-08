@@ -150,6 +150,71 @@ let split list n =
   aux [] (list, n)
 ;;
 
+(* Problem 18 *)
+let slice list s e = fst (split (snd (split list s)) (e - s + 1))
+
+(* Problem 19 *)
+let rotate list n =
+  let l1, l2 = split list n in
+  l2 @ l1
+;;
+
+(* Problem 20 *)
+let rec remove_at n list =
+  if n = 0 then List.tl list else List.hd list :: remove_at (n - 1) (List.tl list)
+;;
+
+(* Problem 21 *)
+let rec insert_at x idx list =
+  match list with
+  | [] -> [ x ]
+  | h :: t -> if idx = 0 then x :: list else h :: insert_at x (idx - 1) t
+;;
+
+(* Problem 22 *)
+let range s e =
+  let rec aux s e = if s = e then [ e ] else s :: aux (s + 1) e in
+  if s > e then List.rev (aux e s) else aux s e
+;;
+
+(* Problem 23 *)
+let rand_select list n =
+  let rec extract acc n = function
+    | [] -> raise Not_found
+    | h :: t -> if n = 0 then h, acc @ t else extract (h :: acc) (n - 1) t
+  in
+  let extract_rand list = extract [] (Random.int (List.length list)) list in
+  let rec aux n acc list =
+    if n = 0
+    then acc
+    else (
+      let picked, rest = extract_rand list in
+      aux (n - 1) (picked :: acc) rest)
+  in
+  aux (min n (List.length list)) [] list
+;;
+
+(* Problem 24 *)
+let lotto_select n m = rand_select (range 1 m) n
+
+(* Problem 25 *)
+
+(* Problem 26 *)
+let rec extract n list =
+  if n <= 0
+  then [ [] ]
+  else (
+    match list with
+    | [] -> []
+    | h :: t ->
+      let with_h = List.map (fun l -> h :: l) (extract (n - 1) t) in
+      let without_h = extract n t in
+      with_h @ without_h)
+;;
+
+(* Problem 27 *)
+let group list sizes = ()
+
 (* TESTING *)
 let () =
   let _ = assert (last [ "a"; "b"; "c"; "d" ] = Some "d") in
@@ -237,5 +302,38 @@ let () =
       = ([ "a"; "b"; "c" ], [ "d"; "e"; "f"; "g"; "h"; "i"; "j" ]))
   in
   let _ = assert (split [ "a"; "b"; "c"; "d" ] 5 = ([ "a"; "b"; "c"; "d" ], [])) in
+  let _ =
+    assert (
+      slice [ "a"; "b"; "c"; "d"; "e"; "f"; "g"; "h"; "i"; "j" ] 2 6
+      = [ "c"; "d"; "e"; "f"; "g" ])
+  in
+  let _ =
+    assert (
+      rotate [ "a"; "b"; "c"; "d"; "e"; "f"; "g"; "h" ] 3
+      = [ "d"; "e"; "f"; "g"; "h"; "a"; "b"; "c" ])
+  in
+  let _ = assert (remove_at 1 [ "a"; "b"; "c"; "d" ] = [ "a"; "c"; "d" ]) in
+  let _ = assert (remove_at 0 [ "a"; "b"; "c"; "d" ] = [ "b"; "c"; "d" ]) in
+  let _ =
+    assert (insert_at "alfa" 1 [ "a"; "b"; "c"; "d" ] = [ "a"; "alfa"; "b"; "c"; "d" ])
+  in
+  let _ =
+    assert (insert_at "alfa" 0 [ "a"; "b"; "c"; "d" ] = [ "alfa"; "a"; "b"; "c"; "d" ])
+  in
+  let _ = assert (range 4 9 = [ 4; 5; 6; 7; 8; 9 ]) in
+  let _ = assert (range 9 4 = [ 9; 8; 7; 6; 5; 4 ]) in
+  let _ = rand_select [ "a"; "b"; "c"; "d"; "e"; "f"; "g"; "h" ] 3 in
+  let _ = lotto_select 2 3 in
+  let _ =
+    assert (
+      extract 2 [ "a"; "b"; "c"; "d" ]
+      = [ [ "a"; "b" ]
+        ; [ "a"; "c" ]
+        ; [ "a"; "d" ]
+        ; [ "b"; "c" ]
+        ; [ "b"; "d" ]
+        ; [ "c"; "d" ]
+        ])
+  in
   ()
 ;;
