@@ -241,7 +241,81 @@ let rec group list sizes =
          (extract n list))
 ;;
 
-(* Problem 28 *)
+(* Problem 28-30 *)
+let rec insert cmp e = function
+  | [] -> [ e ]
+  | h :: t as l -> if cmp e h <= 0 then e :: l else h :: insert cmp e t
+;;
+
+let rec sort cmp = function
+  | [] -> []
+  | h :: t -> insert cmp h (sort cmp t)
+;;
+
+let length_sort = sort List.compare_lengths
+
+let frequency_sort list =
+  List.map
+    (fun l ->
+      ( l
+      , List.fold_left
+          (fun acc l' -> if List.compare_lengths l l' = 0 then acc + 1 else acc)
+          0
+          list ))
+    list
+  |> sort (fun (_, f1) (_, f2) -> compare f1 f2)
+  |> List.map fst
+;;
+
+(* Problem 31 *)
+let is_prime n =
+  let n = abs n in
+  let rec aux i =
+    if i * i > n then true else if n mod i = 0 then false else aux (i + 1)
+  in
+  if n <= 1 then false else aux 2
+;;
+
+let sieve n =
+  let n = abs n in
+  let filter_mul p = List.filter (fun n -> n mod p <> 0) in
+  let rec aux = function
+    | [] -> false
+    | [ n' ] -> n' = n
+    | p :: t -> aux (filter_mul p t)
+  in
+  n > 1 && (aux @@ range 2 n)
+;;
+
+(* Problem 32 *)
+let rec gcd a b =
+  if a = b
+  then a
+  else (
+    let mi = min a b in
+    let ma = max a b in
+    gcd (ma - mi) mi)
+;;
+
+(* Problem 33 *)
+let coprime a b = gcd a b = 1
+
+(* Problem 34 *)
+let phi n =
+  List.fold_left (fun acc m -> if coprime n m then acc + 1 else acc) 0 (range 1 n)
+;;
+
+(* Problem 35 *)
+let rec factors n =
+  let rec aux d = if n mod d = 0 then d :: factors (n / d) else aux (d + 1) in
+  if n <= 1 then [] else aux 2
+;;
+
+(* Problem 36 *)
+let factors_enc n = List.map (fun (f, s) -> (s, f)) (encode @@ factors n)
+
+(* Problem 37 *)
+let phi_improved = ()
 
 (* TESTING *)
 let () =
@@ -380,5 +454,62 @@ let () =
         ; [ [ "c"; "d" ]; [ "b" ] ]
         ])
   in
+  let _ =
+    assert (
+      length_sort
+        [ [ "a"; "b"; "c" ]
+        ; [ "d"; "e" ]
+        ; [ "f"; "g"; "h" ]
+        ; [ "d"; "e" ]
+        ; [ "i"; "j"; "k"; "l" ]
+        ; [ "m"; "n" ]
+        ; [ "o" ]
+        ]
+      = [ [ "o" ]
+        ; [ "d"; "e" ]
+        ; [ "d"; "e" ]
+        ; [ "m"; "n" ]
+        ; [ "a"; "b"; "c" ]
+        ; [ "f"; "g"; "h" ]
+        ; [ "i"; "j"; "k"; "l" ]
+        ])
+  in
+  let _ =
+    assert (
+      frequency_sort
+        [ [ "a"; "b"; "c" ]
+        ; [ "d"; "e" ]
+        ; [ "f"; "g"; "h" ]
+        ; [ "d"; "e" ]
+        ; [ "i"; "j"; "k"; "l" ]
+        ; [ "m"; "n" ]
+        ; [ "o" ]
+        ]
+      = [ [ "i"; "j"; "k"; "l" ]
+        ; [ "o" ]
+        ; [ "a"; "b"; "c" ]
+        ; [ "f"; "g"; "h" ]
+        ; [ "d"; "e" ]
+        ; [ "d"; "e" ]
+        ; [ "m"; "n" ]
+        ])
+  in
+  let _ = assert ((not (is_prime 1)) = true) in
+  let _ = assert (is_prime 7 = true) in
+  let _ = assert ((not (is_prime 12)) = true) in
+  let _ = assert ((not (sieve 1)) = true) in
+  let _ = assert (sieve 7 = true) in
+  let _ = assert ((not (sieve 12)) = true) in
+  let _ = assert (gcd 13 27 = 1) in
+  let _ = assert (gcd 20536 7826 = 2) in
+  let _ = assert (coprime 13 27 = true) in
+  let _ = assert ((not (coprime 20536 7826)) = true) in
+  let _ = assert (phi 10 = 4) in
+  let _ = assert (phi 11 = 10) in
+  let _ = assert (phi 1 = 1) in
+  let _ = assert (phi 12 = 4) in
+  let _ = assert (factors 315 = [ 3; 3; 5; 7 ]) in
+  let _ = assert (factors 12 = [ 2; 2; 3 ]) in
+  let _ = assert (factors_enc 315 = [(3, 2); (5, 1); (7, 1)]) in
   ()
 ;;

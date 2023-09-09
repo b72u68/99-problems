@@ -1,9 +1,9 @@
-# dune fmt
+# dune exec ocaml_problems -w
 # OCAMLPARAM: unset
 # Shared cache: disabled
 # Workspace root: /home/edo/Projects/99_problems
 # Auto-detected concurrency: 4
-$ /home/edo/.opam/default/bin/ocamlc.opt -config > /tmp/dune_f6f6fb_output
+$ /home/edo/.opam/default/bin/ocamlc.opt -config > /tmp/dune_537c7b_output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -112,88 +112,33 @@ $ /home/edo/.opam/default/bin/ocamlc.opt -config > /tmp/dune_f6f6fb_output
 #      ; windows_unicode = false
 #      }
 #  }
-$ (cd _build/default && /home/edo/.opam/default/bin/ocamlformat --impl bin/main.ml) > _build/default/bin/.formatted/main.ml
-$ /usr/bin/git --no-pager diff --no-index --color=always -u _build/default/bin/main.ml _build/default/bin/.formatted/main.ml
-> diff --git a/_build/default/bin/main.ml b/_build/default/bin/.formatted/main.ml
-> index 27aa9db..27c706e 100644
-> --- a/_build/default/bin/main.ml
-> +++ b/_build/default/bin/.formatted/main.ml
-> @@ -214,23 +214,33 @@ let rec extract n list =
->  
->  (* Problem 27 *)
->  let rec group list sizes =
-> -    let filter_elem x = List.filter ((<>) x) in
-> -    let rec extract n list =
-> -        if n <= 0 then [([], list)]
-> -        else
-> -            match list with
-> -            | [] -> []
-> -            | h::t ->
-> -                    let with_h = List.map (fun (l, rest) -> (h::l, filter_elem h rest)) (extract (n-1) t) in
-> -                    let without_h = List.map (fun (l, rest) -> (l, h::rest)) (extract n (filter_elem h t)) in
-> -                    with_h @ without_h
-> -    in
-> -    match sizes with
-> -    | [] -> [[]]
-> -    | n::t -> List.fold_left (@) [] (List.map (fun (l, rest) -> List.map (fun gl -> l::gl) (group rest t)) (extract n list))
-> +  let filter_elem x = List.filter (( <> ) x) in
-> +  let rec extract n list =
-> +    if n <= 0
-> +    then [ [], list ]
-> +    else (
-> +      match list with
-> +      | [] -> []
-> +      | h :: t ->
-> +        let with_h =
-> +          List.map (fun (l, rest) -> h :: l, filter_elem h rest) (extract (n - 1) t)
-> +        in
-> +        let without_h =
-> +          List.map (fun (l, rest) -> l, h :: rest) (extract n (filter_elem h t))
-> +        in
-> +        with_h @ without_h)
-> +  in
-> +  match sizes with
-> +  | [] -> [ [] ]
-> +  | n :: t ->
-> +    List.fold_left
-> +      ( @ )
-> +      []
-> +      (List.map
-> +         (fun (l, rest) -> List.map (fun gl -> l :: gl) (group rest t))
-> +         (extract n list))
->  ;;
->  
-> -
->  (* TESTING *)
->  let () =
->    let _ = assert (last [ "a"; "b"; "c"; "d" ] = Some "d") in
-> @@ -351,11 +361,22 @@ let () =
->          ; [ "c"; "d" ]
->          ])
->    in
-> -  let _ = assert (group ["a"; "b"; "c"; "d"] [2; 1] =
-> -  [[["a"; "b"]; ["c"]]; [["a"; "b"]; ["d"]]; [["a"; "c"]; ["b"]];
-> -   [["a"; "c"]; ["d"]]; [["a"; "d"]; ["b"]]; [["a"; "d"]; ["c"]];
-> -    [["b"; "c"]; ["a"]]; [["b"; "c"]; ["d"]]; [["b"; "d"]; ["a"]];
-> -     [["b"; "d"]; ["c"]]; [["c"; "d"]; ["a"]]; [["c"; "d"]; ["b"]]]) in
-> -
-> +  let _ =
-> +    assert (
-> +      group [ "a"; "b"; "c"; "d" ] [ 2; 1 ]
-> +      = [ [ [ "a"; "b" ]; [ "c" ] ]
-> +        ; [ [ "a"; "b" ]; [ "d" ] ]
-> +        ; [ [ "a"; "c" ]; [ "b" ] ]
-> +        ; [ [ "a"; "c" ]; [ "d" ] ]
-> +        ; [ [ "a"; "d" ]; [ "b" ] ]
-> +        ; [ [ "a"; "d" ]; [ "c" ] ]
-> +        ; [ [ "b"; "c" ]; [ "a" ] ]
-> +        ; [ [ "b"; "c" ]; [ "d" ] ]
-> +        ; [ [ "b"; "d" ]; [ "a" ] ]
-> +        ; [ [ "b"; "d" ]; [ "c" ] ]
-> +        ; [ [ "c"; "d" ]; [ "a" ] ]
-> +        ; [ [ "c"; "d" ]; [ "b" ] ]
-> +        ])
-> +  in
->    ()
->  ;;
-[1]
+# Attempted to add watch to non-existent directory /snap.
+# Attempted to add watch to non-existent directory
+# /home/edo/Projects/99_problems/edo/.local.
+# Attempted to add watch to non-existent directory /snap.
+# Attempted to add watch to non-existent directory
+# /home/edo/Projects/99_problems/edo/.local.
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 515, characters 0-2:
+> 515 | ;;
+>       ^^
+> Error: Syntax error
+[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 318, characters 4-16:
+> 318 | let phi_improved = ()
+>           ^^^^^^^^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value phi_improved.
+[2]
