@@ -197,8 +197,6 @@ let rand_select list n =
 (* Problem 24 *)
 let lotto_select n m = rand_select (range 1 m) n
 
-(* Problem 25 *)
-
 (* Problem 26 *)
 let rec extract n list =
   if n <= 0
@@ -312,10 +310,129 @@ let rec factors n =
 ;;
 
 (* Problem 36 *)
-let factors_enc n = List.map (fun (f, s) -> (s, f)) (encode @@ factors n)
+let factors_enc n = List.map (fun (f, s) -> s, f) (encode @@ factors n)
 
 (* Problem 37 *)
-let phi_improved = ()
+let phi_improved n =
+  let rec pow a = function
+    | 0 -> 1
+    | 1 -> a
+    | n -> n * pow a (n - 1)
+  in
+  List.fold_left (fun acc (p, m) -> acc * (p - 1) * pow p (m - 1)) 1 (factors_enc n)
+;;
+
+(* Problem 38 *)
+let timeit f a =
+  let t0 = Unix.gettimeofday () in
+  ignore (f a);
+  let t1 = Unix.gettimeofday () in
+  t1 -. t0
+;;
+
+(* Problem 39 *)
+let rec all_primes s e =
+  let filter_mul p = List.filter (fun n -> n mod p <> 0) in
+  let rec aux acc = function
+    | [] -> List.rev acc
+    | p :: t -> aux (p :: acc) (filter_mul p t)
+  in
+  if is_prime s then aux [] @@ range s e else all_primes (s + 1) e
+;;
+
+(* Problem 40 *)
+let goldbach n =
+  let rec aux = function
+    | [] -> raise Not_found
+    | p :: t -> if is_prime (n - p) then p, n - p else aux t
+  in
+  aux @@ all_primes 2 ((n / 2) + 1)
+;;
+
+(* Problem 41 *)
+let rec goldbach_list s e =
+  if s > e
+  then []
+  else if s mod 2 = 1
+  then goldbach_list (s + 1) e
+  else (s, goldbach s) :: goldbach_list (s + 2) e
+;;
+
+(* Problem 46 *)
+type bool_expr =
+  | Var of string
+  | Not of bool_expr
+  | And of bool_expr * bool_expr
+  | Or of bool_expr * bool_expr
+
+let eval_var ctx var = snd @@ List.find (fun (var', _) -> var = var') ctx
+
+let rec eval_expr ctx = function
+  | Var v -> eval_var ctx v
+  | Not e -> not @@ eval_expr ctx e
+  | And (e1, e2) -> eval_expr ctx e1 && eval_expr ctx e2
+  | Or (e1, e2) -> eval_expr ctx e1 || eval_expr ctx e2
+;;
+
+let rec gen_ctxs = function
+  | [] -> [ [] ]
+  | h :: t ->
+    let ctx_rest = gen_ctxs t in
+    let h_true = List.map (fun ctx -> (h, true) :: ctx) ctx_rest in
+    let h_false = List.map (fun ctx -> (h, false) :: ctx) ctx_rest in
+    h_true @ h_false
+;;
+
+let table2 v1 v2 expr =
+  let ctxs = [ true, true; true, false; false, true; false, false ] in
+  List.map (fun (val1, val2) -> val1, val2, eval_expr [ v1, val1; v2, val2 ] expr) ctxs
+;;
+
+(* Problem 48 *)
+let table vars expr = List.map (fun ctx -> ctx, eval_expr ctx expr) @@ gen_ctxs vars
+
+(* Problem 49 *)
+let gray n =
+  let rec gray_next_level k l =
+    if k < n
+    then (
+      let first_half, second_half =
+        List.fold_left
+          (fun (acc1, acc2) x -> ("0" ^ x) :: acc1, ("1" ^ x) :: acc2)
+          ([], [])
+          l
+      in
+      gray_next_level (k + 1) (List.rev_append first_half second_half))
+    else l
+  in
+  gray_next_level 1 [ "0"; "1" ]
+;;
+
+(* Problem 50 *)
+type hf_tree =
+  | Node of hf_tree * hf_tree
+  | Leaf of string
+
+let huffman fs =
+  let fsts = List.map (fun (s, f) -> Leaf s, f) fs in
+  let rec construct_tree fst =
+    let fsts' = sort (fun (_, f1) (_, f2) -> compare f1 f2) fst in
+    match fsts' with
+    | [] -> raise (Failure "Cannot construct Huffman tree")
+    | [ (fst, _) ] -> fst
+    | (t1, f1) :: (t2, f2) :: t -> construct_tree @@ ((Node (t1, t2), f1 + f2) :: t)
+  in
+  let rec decode_tree acc = function
+    | Node (t1, t2) -> decode_tree (acc ^ "0") t1 @ decode_tree (acc ^ "1") t2
+    | Leaf s -> [ s, acc ]
+  in
+  decode_tree "" @@ construct_tree fsts
+;;
+
+(* Problem 51 *)
+type 'a binary_tree =
+    | Empty
+    | Node of 'a * 'a binary_tree * 'a binary_tree
 
 (* TESTING *)
 let () =
@@ -510,6 +627,43 @@ let () =
   let _ = assert (phi 12 = 4) in
   let _ = assert (factors 315 = [ 3; 3; 5; 7 ]) in
   let _ = assert (factors 12 = [ 2; 2; 3 ]) in
-  let _ = assert (factors_enc 315 = [(3, 2); (5, 1); (7, 1)]) in
+  let _ = assert (factors_enc 315 = [ 3, 2; 5, 1; 7, 1 ]) in
+  let _ = assert (phi_improved 10 = 4) in
+  let _ = assert (phi_improved 13 = 12) in
+  let _ = assert (timeit phi 10090 > timeit phi_improved 10090) in
+  let _ = assert (List.length (all_primes 2 7920) == 1000) in
+  let _ = assert (goldbach 28 = (5, 23)) in
+  let _ =
+    assert (
+      goldbach_list 9 20
+      = [ 10, (3, 7); 12, (5, 7); 14, (3, 11); 16, (3, 13); 18, (5, 13); 20, (3, 17) ])
+  in
+  let _ =
+    assert (
+      table2 "a" "b" (And (Var "a", Or (Var "a", Var "b")))
+      = [ true, true, true; true, false, true; false, true, false; false, false, false ])
+  in
+  let _ =
+    assert (
+      table2 "a" "b" (Not (And (Var "a", Var "b")))
+      = [ true, true, false; true, false, true; false, true, true; false, false, true ])
+  in
+  let _ =
+    assert (
+      table [ "a"; "b" ] (And (Var "a", Or (Var "a", Var "b")))
+      = [ [ "a", true; "b", true ], true
+        ; [ "a", true; "b", false ], true
+        ; [ "a", false; "b", true ], false
+        ; [ "a", false; "b", false ], false
+        ])
+  in
+  let _ = assert (gray 1 = [ "0"; "1" ]) in
+  let _ = assert (gray 2 = [ "00"; "01"; "11"; "10" ]) in
+  let _ = assert (gray 3 = [ "000"; "001"; "011"; "010"; "110"; "111"; "101"; "100" ]) in
+  let _ =
+    assert (
+      huffman [ "a", 45; "b", 13; "c", 12; "d", 16; "e", 9; "f", 5 ]
+      = [ "a", "0"; "c", "100"; "b", "101"; "f", "1100"; "e", "1101"; "d", "111" ])
+  in
   ()
 ;;

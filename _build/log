@@ -1,9 +1,9 @@
-# dune exec ocaml_problems -w
+# dune fmt
 # OCAMLPARAM: unset
 # Shared cache: disabled
 # Workspace root: /home/edo/Projects/99_problems
 # Auto-detected concurrency: 4
-$ /home/edo/.opam/default/bin/ocamlc.opt -config > /tmp/dune_537c7b_output
+$ /home/edo/.opam/default/bin/ocamlc.opt -config > /tmp/dune_cc2f90_output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -112,33 +112,108 @@ $ /home/edo/.opam/default/bin/ocamlc.opt -config > /tmp/dune_537c7b_output
 #      ; windows_unicode = false
 #      }
 #  }
-# Attempted to add watch to non-existent directory /snap.
-# Attempted to add watch to non-existent directory
-# /home/edo/Projects/99_problems/edo/.local.
-# Attempted to add watch to non-existent directory /snap.
-# Attempted to add watch to non-existent directory
-# /home/edo/Projects/99_problems/edo/.local.
-$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
-$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
-$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
-$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
-$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
-$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
-$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
-$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/ocaml_problems.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
-$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
-$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
-$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
-$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
-$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
-> File "bin/main.ml", line 515, characters 0-2:
-> 515 | ;;
->       ^^
-> Error: Syntax error
-[2]
-$ (cd _build/default && /home/edo/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.ocaml_problems.objs/byte -I lib/.ocaml_problems.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
-> File "bin/main.ml", line 318, characters 4-16:
-> 318 | let phi_improved = ()
->           ^^^^^^^^^^^^
-> Error (warning 32 [unused-value-declaration]): unused value phi_improved.
-[2]
+$ (cd _build/default && /home/edo/.opam/default/bin/ocamlformat --impl bin/main.ml) > _build/default/bin/.formatted/main.ml
+$ /usr/bin/git --no-pager diff --no-index --color=always -u _build/default/bin/main.ml _build/default/bin/.formatted/main.ml
+> diff --git a/_build/default/bin/main.ml b/_build/default/bin/.formatted/main.ml
+> index 9c8692f..b3536a6 100644
+> --- a/_build/default/bin/main.ml
+> +++ b/_build/default/bin/.formatted/main.ml
+> @@ -317,9 +317,9 @@ let phi_improved n =
+>    let rec pow a = function
+>      | 0 -> 1
+>      | 1 -> a
+> -    | n -> n * (pow a (n - 1))
+> +    | n -> n * pow a (n - 1)
+>    in
+> -  List.fold_left (fun acc (p, m) -> acc * (p - 1) * (pow p (m - 1))) 1 (factors_enc n)
+> +  List.fold_left (fun acc (p, m) -> acc * (p - 1) * pow p (m - 1)) 1 (factors_enc n)
+>  ;;
+>  
+>  (* Problem 38 *)
+> @@ -393,37 +393,40 @@ let table vars expr = List.map (fun ctx -> ctx, eval_expr ctx expr) @@ gen_ctxs
+>  
+>  (* Problem 49 *)
+>  let gray n =
+> -    let rec gray_next_level k l =
+> -        if k < n then
+> -            let (first_half, second_half) =
+> -                List.fold_left (fun (acc1, acc2) x -> (("0" ^ x)::acc1, ("1" ^ x)::acc2)) ([], []) l
+> -            in
+> -            gray_next_level (k+1) (List.rev_append first_half second_half)
+> -        else l
+> -    in
+> -    gray_next_level 1 ["0"; "1"]
+> +  let rec gray_next_level k l =
+> +    if k < n
+> +    then (
+> +      let first_half, second_half =
+> +        List.fold_left
+> +          (fun (acc1, acc2) x -> ("0" ^ x) :: acc1, ("1" ^ x) :: acc2)
+> +          ([], [])
+> +          l
+> +      in
+> +      gray_next_level (k + 1) (List.rev_append first_half second_half))
+> +    else l
+> +  in
+> +  gray_next_level 1 [ "0"; "1" ]
+>  ;;
+>  
+>  (* Problem 50 *)
+>  type hf_tree =
+> -    | Node of hf_tree * hf_tree
+> -    | Leaf of string
+> -;;
+> +  | Node of hf_tree * hf_tree
+> +  | Leaf of string
+>  
+>  let huffman fs =
+> -    let fsts = List.map (fun (s, f) -> (Leaf s, f)) fs in
+> -    let rec construct_tree fst =
+> -        let fsts' = sort (fun (_, f1) (_, f2) -> compare f1 f2) fst in
+> -        match fsts' with
+> -        | [] -> raise (Failure "Cannot construct Huffman tree")
+> -        | [(fst, _)] -> fst
+> -        | (t1, f1)::(t2, f2)::t -> construct_tree @@ (Node (t1, t2), f1 + f2)::t
+> -    in
+> -    let rec decode_tree acc = function
+> -        | Node (t1, t2) -> decode_tree (acc ^ "0") t1 @ decode_tree (acc ^ "1") t2
+> -        | Leaf s -> [(s, acc)]
+> -    in
+> -        decode_tree "" @@ construct_tree fsts
+> +  let fsts = List.map (fun (s, f) -> Leaf s, f) fs in
+> +  let rec construct_tree fst =
+> +    let fsts' = sort (fun (_, f1) (_, f2) -> compare f1 f2) fst in
+> +    match fsts' with
+> +    | [] -> raise (Failure "Cannot construct Huffman tree")
+> +    | [ (fst, _) ] -> fst
+> +    | (t1, f1) :: (t2, f2) :: t -> construct_tree @@ ((Node (t1, t2), f1 + f2) :: t)
+> +  in
+> +  let rec decode_tree acc = function
+> +    | Node (t1, t2) -> decode_tree (acc ^ "0") t1 @ decode_tree (acc ^ "1") t2
+> +    | Leaf s -> [ s, acc ]
+> +  in
+> +  decode_tree "" @@ construct_tree fsts
+>  ;;
+>  
+>  (* TESTING *)
+> @@ -649,11 +652,13 @@ let () =
+>          ; [ "a", false; "b", false ], false
+>          ])
+>    in
+> -  let _ = assert (gray 1 = ["0"; "1"]) in
+> -  let _ = assert (gray 2 = ["00"; "01"; "11"; "10"]) in
+> -  let _ = assert (gray 3 = ["000"; "001"; "011"; "010"; "110"; "111"; "101"; "100"]) in
+> -  let _ = assert (huffman [("a", 45); ("b", 13); ("c", 12); ("d", 16);
+> -          ("e", 9); ("f", 5)] = [("a", "0"); ("c", "100"); ("b", "101"); ("f", "1100"); ("e", "1101");
+> - ("d", "111")]) in
+> +  let _ = assert (gray 1 = [ "0"; "1" ]) in
+> +  let _ = assert (gray 2 = [ "00"; "01"; "11"; "10" ]) in
+> +  let _ = assert (gray 3 = [ "000"; "001"; "011"; "010"; "110"; "111"; "101"; "100" ]) in
+> +  let _ =
+> +    assert (
+> +      huffman [ "a", 45; "b", 13; "c", 12; "d", 16; "e", 9; "f", 5 ]
+> +      = [ "a", "0"; "c", "100"; "b", "101"; "f", "1100"; "e", "1101"; "d", "111" ])
+> +  in
+>    ()
+>  ;;
+[1]

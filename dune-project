@@ -15,7 +15,7 @@
  (name ocaml_problems)
  (synopsis "99 OCaml problems")
  (description "99 OCaml problems from https://ocaml.org/problems")
- (depends ocaml dune)
+ (depends ocaml dune unix)
  (tags
   (topics "ocaml" "exercises")))
 
