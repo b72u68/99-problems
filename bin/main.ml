@@ -213,7 +213,35 @@ let rec extract n list =
 ;;
 
 (* Problem 27 *)
-let group list sizes = ()
+let rec group list sizes =
+  let filter_elem x = List.filter (( <> ) x) in
+  let rec extract n list =
+    if n <= 0
+    then [ [], list ]
+    else (
+      match list with
+      | [] -> []
+      | h :: t ->
+        let with_h =
+          List.map (fun (l, rest) -> h :: l, filter_elem h rest) (extract (n - 1) t)
+        in
+        let without_h =
+          List.map (fun (l, rest) -> l, h :: rest) (extract n (filter_elem h t))
+        in
+        with_h @ without_h)
+  in
+  match sizes with
+  | [] -> [ [] ]
+  | n :: t ->
+    List.fold_left
+      ( @ )
+      []
+      (List.map
+         (fun (l, rest) -> List.map (fun gl -> l :: gl) (group rest t))
+         (extract n list))
+;;
+
+(* Problem 28 *)
 
 (* TESTING *)
 let () =
@@ -333,6 +361,23 @@ let () =
         ; [ "b"; "c" ]
         ; [ "b"; "d" ]
         ; [ "c"; "d" ]
+        ])
+  in
+  let _ =
+    assert (
+      group [ "a"; "b"; "c"; "d" ] [ 2; 1 ]
+      = [ [ [ "a"; "b" ]; [ "c" ] ]
+        ; [ [ "a"; "b" ]; [ "d" ] ]
+        ; [ [ "a"; "c" ]; [ "b" ] ]
+        ; [ [ "a"; "c" ]; [ "d" ] ]
+        ; [ [ "a"; "d" ]; [ "b" ] ]
+        ; [ [ "a"; "d" ]; [ "c" ] ]
+        ; [ [ "b"; "c" ]; [ "a" ] ]
+        ; [ [ "b"; "c" ]; [ "d" ] ]
+        ; [ [ "b"; "d" ]; [ "a" ] ]
+        ; [ [ "b"; "d" ]; [ "c" ] ]
+        ; [ [ "c"; "d" ]; [ "a" ] ]
+        ; [ [ "c"; "d" ]; [ "b" ] ]
         ])
   in
   ()
