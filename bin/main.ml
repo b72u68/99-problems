@@ -429,10 +429,62 @@ let huffman fs =
   decode_tree "" @@ construct_tree fsts
 ;;
 
-(* Problem 51 *)
+(* Problem 55 *)
 type 'a binary_tree =
-    | Empty
-    | Node of 'a * 'a binary_tree * 'a binary_tree
+  | Empty
+  | Node of 'a * 'a binary_tree * 'a binary_tree
+
+let rec cbal_tree n =
+  if n = 0
+  then [ Empty ]
+  else if (n - 1) mod 2 = 0
+  then (
+    let ts = cbal_tree @@ ((n - 1) / 2) in
+    List.fold_right
+      ( @ )
+      (List.map (fun t -> List.map (fun t' -> Node ('x', t, t')) ts) ts)
+      [])
+  else (
+    let ts, ts' = cbal_tree @@ ((n - 1) / 2), cbal_tree @@ (((n - 1) / 2) + 1) in
+    List.fold_right
+      ( @ )
+      (List.map (fun t -> List.map (fun t' -> Node ('x', t, t')) ts') ts)
+      []
+    @ List.fold_right
+        ( @ )
+        (List.map (fun t -> List.map (fun t' -> Node ('x', t, t')) ts) ts')
+        [])
+;;
+
+(* Problem 56 *)
+let rec is_mirror t1 t2 =
+  match t1, t2 with
+  | Empty, Empty -> true
+  | Empty, Node _ | Node _, Empty -> false
+  | Node (_, l1, r1), Node (_, l2, r2) -> is_mirror l1 r2 && is_mirror l2 r1
+;;
+
+let is_symmetric = function
+  | Empty -> true
+  | Node (_, t1, t2) -> is_mirror t1 t2
+;;
+
+(* Problem 57 *)
+let construct =
+  let rec insert_val v = function
+    | Empty -> Node (v, Empty, Empty)
+    | Node (v', lt, rt) ->
+      if v' < v then Node (v', lt, insert_val v rt) else Node (v', insert_val v lt, rt)
+  in
+  let rec aux acc = function
+    | [] -> acc
+    | h :: t -> aux (insert_val h acc) t
+  in
+  aux Empty
+;;
+
+(* Problem 58 *)
+let sym_cbal_trees n = List.filter is_symmetric (cbal_tree n)
 
 (* TESTING *)
 let () =
@@ -665,5 +717,48 @@ let () =
       huffman [ "a", 45; "b", 13; "c", 12; "d", 16; "e", 9; "f", 5 ]
       = [ "a", "0"; "c", "100"; "b", "101"; "f", "1100"; "e", "1101"; "d", "111" ])
   in
+  let _ =
+    assert (
+      cbal_tree 4
+      = [ Node ('x', Node ('x', Empty, Empty), Node ('x', Empty, Node ('x', Empty, Empty)))
+        ; Node ('x', Node ('x', Empty, Empty), Node ('x', Node ('x', Empty, Empty), Empty))
+        ; Node ('x', Node ('x', Empty, Node ('x', Empty, Empty)), Node ('x', Empty, Empty))
+        ; Node ('x', Node ('x', Node ('x', Empty, Empty), Empty), Node ('x', Empty, Empty))
+        ])
+  in
+  let _ =
+    assert (
+      is_symmetric
+        (Node
+           ( 'x'
+           , Node ('a', Node ('b', Empty, Empty), Node ('c', Empty, Empty))
+           , Node ('a', Node ('c', Empty, Empty), Node ('b', Empty, Empty)) ))
+      = true)
+  in
+  let _ = assert (is_symmetric (Node ('a', Node ('b', Empty, Empty), Empty)) = false) in
+  let _ =
+    assert (
+      construct [ 3; 2; 5; 7; 1 ]
+      = Node
+          ( 3
+          , Node (2, Node (1, Empty, Empty), Empty)
+          , Node (5, Empty, Node (7, Empty, Empty)) ))
+  in
+  let _ = assert (is_symmetric (construct [ 5; 3; 18; 1; 4; 12; 21 ]) = true) in
+  let _ = assert ((not (is_symmetric (construct [ 3; 2; 5; 7; 4 ]))) = true) in
+  let _ =
+    assert (
+      sym_cbal_trees 5
+      = [ Node
+            ( 'x'
+            , Node ('x', Empty, Node ('x', Empty, Empty))
+            , Node ('x', Node ('x', Empty, Empty), Empty) )
+        ; Node
+            ( 'x'
+            , Node ('x', Node ('x', Empty, Empty), Empty)
+            , Node ('x', Empty, Node ('x', Empty, Empty)) )
+        ])
+  in
+  let _ = assert (List.length (sym_cbal_trees 57) = 256) in
   ()
 ;;
