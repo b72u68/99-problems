@@ -486,6 +486,33 @@ let construct =
 (* Problem 58 *)
 let sym_cbal_trees n = List.filter is_symmetric (cbal_tree n)
 
+(* Problem 59 *)
+(* Build all trees with given [left] and [right] subtrees. *)
+let add_trees_with left right all =
+  let add_right_tree all l =
+    List.fold_left (fun a r -> Node ('x', l, r) :: a) all right
+  in
+  List.fold_left add_right_tree all left
+;;
+
+let rec hbal_tree n =
+  if n = 0
+  then [ Empty ]
+  else if n = 1
+  then [ Node ('x', Empty, Empty) ]
+  else (
+    let t1 = hbal_tree (n - 1) in
+    let t2 = hbal_tree (n - 2) in
+    add_trees_with t1 t1 (add_trees_with t1 t2 (add_trees_with t2 t1 [])))
+;;
+
+(* Problem 60 *)
+let rec min_nodes h =
+  if h <= 0 then 0 else if h = 1 then 1 else min_nodes (h - 1) + min_nodes (h - 2) + 1
+;;
+
+let min_height n = int_of_float (ceil (log (float (n + 1)) /. log 2.))
+
 (* TESTING *)
 let () =
   let _ = assert (last [ "a"; "b"; "c"; "d" ] = Some "d") in
@@ -760,5 +787,60 @@ let () =
         ])
   in
   let _ = assert (List.length (sym_cbal_trees 57) = 256) in
+  let _ =
+    assert (
+      hbal_tree 3
+      = [ Node
+            ( 'x'
+            , Node ('x', Empty, Node ('x', Empty, Empty))
+            , Node ('x', Empty, Node ('x', Empty, Empty)) )
+        ; Node
+            ( 'x'
+            , Node ('x', Empty, Node ('x', Empty, Empty))
+            , Node ('x', Node ('x', Empty, Empty), Empty) )
+        ; Node
+            ( 'x'
+            , Node ('x', Empty, Node ('x', Empty, Empty))
+            , Node ('x', Node ('x', Empty, Empty), Node ('x', Empty, Empty)) )
+        ; Node
+            ( 'x'
+            , Node ('x', Node ('x', Empty, Empty), Empty)
+            , Node ('x', Empty, Node ('x', Empty, Empty)) )
+        ; Node
+            ( 'x'
+            , Node ('x', Node ('x', Empty, Empty), Empty)
+            , Node ('x', Node ('x', Empty, Empty), Empty) )
+        ; Node
+            ( 'x'
+            , Node ('x', Node ('x', Empty, Empty), Empty)
+            , Node ('x', Node ('x', Empty, Empty), Node ('x', Empty, Empty)) )
+        ; Node
+            ( 'x'
+            , Node ('x', Node ('x', Empty, Empty), Node ('x', Empty, Empty))
+            , Node ('x', Empty, Node ('x', Empty, Empty)) )
+        ; Node
+            ( 'x'
+            , Node ('x', Node ('x', Empty, Empty), Node ('x', Empty, Empty))
+            , Node ('x', Node ('x', Empty, Empty), Empty) )
+        ; Node
+            ( 'x'
+            , Node ('x', Node ('x', Empty, Empty), Node ('x', Empty, Empty))
+            , Node ('x', Node ('x', Empty, Empty), Node ('x', Empty, Empty)) )
+        ; Node ('x', Node ('x', Empty, Node ('x', Empty, Empty)), Node ('x', Empty, Empty))
+        ; Node ('x', Node ('x', Node ('x', Empty, Empty), Empty), Node ('x', Empty, Empty))
+        ; Node
+            ( 'x'
+            , Node ('x', Node ('x', Empty, Empty), Node ('x', Empty, Empty))
+            , Node ('x', Empty, Empty) )
+        ; Node ('x', Node ('x', Empty, Empty), Node ('x', Empty, Node ('x', Empty, Empty)))
+        ; Node ('x', Node ('x', Empty, Empty), Node ('x', Node ('x', Empty, Empty), Empty))
+        ; Node
+            ( 'x'
+            , Node ('x', Empty, Empty)
+            , Node ('x', Node ('x', Empty, Empty), Node ('x', Empty, Empty)) )
+        ])
+  in
+  let _ = assert (min_nodes 5 = 12) in
+  let _ = assert (min_height 12 = 4) in
   ()
 ;;

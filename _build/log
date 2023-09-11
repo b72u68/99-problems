@@ -1,9 +1,9 @@
-# dune fmt
+# dune utop
 # OCAMLPARAM: unset
 # Shared cache: disabled
 # Workspace root: /home/edo/Projects/99_problems
 # Auto-detected concurrency: 4
-$ /home/edo/.opam/default/bin/ocamlc.opt -config > /tmp/dune_7936f9_output
+$ /home/edo/.opam/default/bin/ocamlc.opt -config > /tmp/dune_40b4f9_output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -112,35 +112,3 @@ $ /home/edo/.opam/default/bin/ocamlc.opt -config > /tmp/dune_7936f9_output
 #      ; windows_unicode = false
 #      }
 #  }
-$ (cd _build/default && /home/edo/.opam/default/bin/ocamlformat --impl bin/main.ml) > _build/default/bin/.formatted/main.ml
-$ /usr/bin/git --no-pager diff --no-index --color=always -u _build/default/bin/main.ml _build/default/bin/.formatted/main.ml
-> diff --git a/_build/default/bin/main.ml b/_build/default/bin/.formatted/main.ml
-> index 7f682f2..b621e66 100644
-> --- a/_build/default/bin/main.ml
-> +++ b/_build/default/bin/.formatted/main.ml
-> @@ -746,11 +746,19 @@ let () =
->    in
->    let _ = assert (is_symmetric (construct [ 5; 3; 18; 1; 4; 12; 21 ]) = true) in
->    let _ = assert ((not (is_symmetric (construct [ 3; 2; 5; 7; 4 ]))) = true) in
-> -  let _ = assert (sym_cbal_trees 5 = [Node ('x', Node ('x', Empty, Node ('x', Empty, Empty)),
-> -    Node ('x', Node ('x', Empty, Empty), Empty));
-> -   Node ('x', Node ('x', Node ('x', Empty, Empty), Empty),
-> -     Node ('x', Empty, Node ('x', Empty, Empty)))]
-> -   ) in
-> +  let _ =
-> +    assert (
-> +      sym_cbal_trees 5
-> +      = [ Node
-> +            ( 'x'
-> +            , Node ('x', Empty, Node ('x', Empty, Empty))
-> +            , Node ('x', Node ('x', Empty, Empty), Empty) )
-> +        ; Node
-> +            ( 'x'
-> +            , Node ('x', Node ('x', Empty, Empty), Empty)
-> +            , Node ('x', Empty, Node ('x', Empty, Empty)) )
-> +        ])
-> +  in
->    let _ = assert (List.length (sym_cbal_trees 57) = 256) in
->    ()
->  ;;
-[1]
