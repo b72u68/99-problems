@@ -513,6 +513,55 @@ let rec min_nodes h =
 
 let min_height n = int_of_float (ceil (log (float (n + 1)) /. log 2.))
 
+(* Problem 61A *)
+let rec count_leaves = function
+  | Empty -> 0
+  | Node (_, Empty, Empty) -> 1
+  | Node (_, lt, rt) -> count_leaves lt + count_leaves rt
+;;
+
+(* Problem 61B *)
+let rec leaves = function
+  | Empty -> []
+  | Node (x, Empty, Empty) -> [ x ]
+  | Node (_, lt, rt) -> leaves lt @ leaves rt
+;;
+
+(* Problem 62A *)
+let rec internals = function
+  | Empty -> []
+  | Node (_, Empty, Empty) -> []
+  | Node (x, lt, rt) -> [ x ] @ internals lt @ internals rt
+;;
+
+(* Problem 62B *)
+let at_level t n =
+  if n <= 0
+  then []
+  else (
+    let rec aux lvl = function
+      | Empty -> []
+      | Node (x, lt, rt) -> if lvl = n then [ x ] else aux (lvl + 1) lt @ aux (lvl + 1) rt
+    in
+    aux 1 t)
+;;
+
+(* Problem 63 *)
+let complete_binary_tree =
+  let rec drop n = function
+    | [] -> []
+    | _ :: t as l -> if n <= 0 then l else drop (n - 1) t
+  in
+  let rec aux idx = function
+    | [] -> Empty
+    | h :: t ->
+      let lt = aux (2 * idx) (drop (idx - 1) t) in
+      let rt = aux ((2 * idx) + 1) (drop idx t) in
+      Node (h, lt, rt)
+  in
+  aux 1
+;;
+
 (* TESTING *)
 let () =
   let _ = assert (last [ "a"; "b"; "c"; "d" ] = Some "d") in
@@ -842,5 +891,52 @@ let () =
   in
   let _ = assert (min_nodes 5 = 12) in
   let _ = assert (min_height 12 = 4) in
+  let _ = assert (count_leaves Empty = 0) in
+  let _ =
+    assert (
+      count_leaves
+        (Node
+           ( 'x'
+           , Node ('x', Empty, Empty)
+           , Node ('x', Node ('x', Empty, Empty), Node ('x', Empty, Empty)) ))
+      = 3)
+  in
+  let _ =
+    assert (
+      leaves
+        (Node
+           ( 'a'
+           , Node ('b', Empty, Empty)
+           , Node ('c', Node ('d', Empty, Empty), Node ('e', Empty, Empty)) ))
+      = [ 'b'; 'd'; 'e' ])
+  in
+  let _ = assert (internals (Node ('a', Empty, Empty)) = []) in
+  let _ =
+    assert (
+      internals
+        (Node
+           ( 'a'
+           , Node ('b', Empty, Empty)
+           , Node ('c', Node ('d', Empty, Empty), Node ('e', Empty, Empty)) ))
+      = [ 'a'; 'c' ])
+  in
+  let _ =
+    assert (
+      at_level
+        (Node
+           ( 'a'
+           , Node ('b', Node ('d', Empty, Empty), Node ('e', Empty, Empty))
+           , Node ('c', Empty, Node ('f', Node ('g', Empty, Empty), Empty)) ))
+        2
+      = [ 'b'; 'c' ])
+  in
+  let _ =
+    assert (
+      complete_binary_tree [ 1; 2; 3; 4; 5; 6 ]
+      = Node
+          ( 1
+          , Node (2, Node (4, Empty, Empty), Node (5, Empty, Empty))
+          , Node (3, Node (6, Empty, Empty), Empty) ))
+  in
   ()
 ;;
