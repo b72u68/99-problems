@@ -562,6 +562,108 @@ let complete_binary_tree =
   aux 1
 ;;
 
+(* Problem 64 *)
+let layout_binary_tree_1 t =
+  let rec layout depth x_left = function
+    | Empty -> Empty, x_left
+    | Node (v, l, r) ->
+      let l', l_x_max = layout (depth + 1) x_left l in
+      let r', r_x_max = layout (depth + 1) (l_x_max + 1) r in
+      Node ((v, l_x_max, depth), l', r'), r_x_max
+  in
+  fst (layout 1 1 t)
+;;
+
+(* Problem 65 *)
+(*let layout_binary_tree_2 t = ()*)
+
+(* Problem 66 *)
+(*let layout_binary_tree_3 t = ()*)
+
+(* Problem 67 *)
+let rec string_of_tree = function
+  | Empty -> ""
+  | Node (x, Empty, Empty) -> String.make 1 x
+  | Node (x, l, r) ->
+    String.make 1 x ^ "(" ^ string_of_tree l ^ "," ^ string_of_tree r ^ ")"
+;;
+
+let tree_of_string s =
+  let rec make ofs s =
+    if ofs >= String.length s || s.[ofs] = ',' || s.[ofs] = ')'
+    then Empty, ofs
+    else (
+      let v = s.[ofs] in
+      if ofs + 1 < String.length s && s.[ofs + 1] = '('
+      then (
+        let l, ofs = make (ofs + 2) s in
+        let r, ofs = make (ofs + 1) s in
+        Node (v, l, r), ofs + 1)
+      else Node (v, Empty, Empty), ofs + 1)
+  in
+  fst (make 0 s)
+;;
+
+(* Problem 68 *)
+let rec preorder = function
+  | Empty -> []
+  | Node (v, l, r) -> [ v ] @ preorder l @ preorder r
+;;
+
+let rec inorder = function
+  | Empty -> []
+  | Node (v, l, r) -> inorder l @ [ v ] @ inorder r
+;;
+
+(* Problem 69 *)
+let rec dotstring_tree = function
+  | Empty -> "."
+  | Node (v, l, r) -> String.make 1 v ^ dotstring_tree l ^ dotstring_tree r
+;;
+
+let tree_dotstring s =
+  let rec make ofs s =
+    if ofs >= String.length s || s.[ofs] = '.'
+    then Empty, ofs
+    else (
+      let v = s.[ofs] in
+      let l, ofs = make (ofs + 1) s in
+      let r, ofs = make (ofs + 1) s in
+      Node (v, l, r), ofs)
+  in
+  fst (make 0 s)
+;;
+
+(* Problem 70A *)
+type 'a mult_tree = T of 'a * 'a mult_tree list
+
+let rec iter = function
+  | [] -> "^"
+  | h :: t -> string_of_mult_tree h ^ iter t
+
+and string_of_mult_tree = function
+  | T (v, ts) -> String.make 1 v ^ iter ts
+;;
+
+let mult_tree_of_string s =
+  let rec loop ofs s =
+    if ofs >= String.length s || s.[ofs] = '^'
+    then [], ofs
+    else (
+      let ts, ofs = make ofs s in
+      let ts', ofs = loop (ofs + 1) s in
+      ts @ ts', ofs)
+  and make ofs s =
+    if ofs >= String.length s || s.[ofs] = '^'
+    then [], ofs
+    else (
+      let v = s.[ofs] in
+      let ts, ofs = loop (ofs + 1) s in
+      [ T (v, ts) ], ofs)
+  in
+  List.nth (fst (make 0 s)) 0
+;;
+
 (* TESTING *)
 let () =
   let _ = assert (last [ "a"; "b"; "c"; "d" ] = Some "d") in
@@ -937,6 +1039,98 @@ let () =
           ( 1
           , Node (2, Node (4, Empty, Empty), Node (5, Empty, Empty))
           , Node (3, Node (6, Empty, Empty), Empty) ))
+  in
+  let _ =
+    assert (
+      layout_binary_tree_1
+        (Node
+           ( 'n'
+           , Node
+               ( 'k'
+               , Node
+                   ( 'c'
+                   , Node ('a', Empty, Empty)
+                   , Node ('h', Node ('g', Node ('e', Empty, Empty), Empty), Empty) )
+               , Node ('m', Empty, Empty) )
+           , Node
+               ('u', Node ('p', Empty, Node ('s', Node ('q', Empty, Empty), Empty)), Empty)
+           ))
+      = Node
+          ( ('n', 8, 1)
+          , Node
+              ( ('k', 6, 2)
+              , Node
+                  ( ('c', 2, 3)
+                  , Node (('a', 1, 4), Empty, Empty)
+                  , Node
+                      ( ('h', 5, 4)
+                      , Node (('g', 4, 5), Node (('e', 3, 6), Empty, Empty), Empty)
+                      , Empty ) )
+              , Node (('m', 7, 3), Empty, Empty) )
+          , Node
+              ( ('u', 12, 2)
+              , Node
+                  ( ('p', 9, 3)
+                  , Empty
+                  , Node (('s', 11, 4), Node (('q', 10, 5), Empty, Empty), Empty) )
+              , Empty ) ))
+  in
+  let _ =
+    assert (
+      string_of_tree
+        (Node
+           ( 'a'
+           , Node ('b', Node ('d', Empty, Empty), Node ('e', Empty, Empty))
+           , Node ('c', Empty, Node ('f', Node ('g', Empty, Empty), Empty)) ))
+      = "a(b(d,e),c(,f(g,)))")
+  in
+  let _ =
+    assert (
+      tree_of_string "a(b(d,e),c(,f(g,)))"
+      = Node
+          ( 'a'
+          , Node ('b', Node ('d', Empty, Empty), Node ('e', Empty, Empty))
+          , Node ('c', Empty, Node ('f', Node ('g', Empty, Empty), Empty)) ))
+  in
+  let _ = assert (preorder (Node (1, Node (2, Empty, Empty), Empty)) = [ 1; 2 ]) in
+  let _ = assert (inorder (Node (1, Node (2, Empty, Empty), Empty)) = [ 2; 1 ]) in
+  let _ =
+    assert (
+      dotstring_tree
+        (Node
+           ( 'a'
+           , Node ('b', Node ('d', Empty, Empty), Node ('e', Empty, Empty))
+           , Node ('c', Empty, Node ('f', Node ('g', Empty, Empty), Empty)) ))
+      = "abd..e..c.fg...")
+  in
+  let _ =
+    assert (
+      tree_dotstring "abd..e..c.fg..."
+      = Node
+          ( 'a'
+          , Node ('b', Node ('d', Empty, Empty), Node ('e', Empty, Empty))
+          , Node ('c', Empty, Node ('f', Node ('g', Empty, Empty), Empty)) ))
+  in
+  let _ =
+    assert (
+      string_of_mult_tree
+        (T
+           ( 'a'
+           , [ T ('f', [ T ('g', []) ])
+             ; T ('c', [])
+             ; T ('b', [ T ('d', []); T ('e', []) ])
+             ] ))
+      = "afg^^c^bd^e^^^")
+  in
+  let _ =
+    assert (
+      mult_tree_of_string "afg^^c^bd^e^^^"
+      = T
+          ( 'a'
+          , [ T ('f', [ T ('g', []) ])
+            ; T ('c', [])
+            ; T ('b', [ T ('d', []); T ('e', []) ])
+            ] ))
   in
   ()
 ;;
