@@ -664,6 +664,88 @@ let mult_tree_of_string s =
   List.nth (fst (make 0 s)) 0
 ;;
 
+(* Problem 70B *)
+let rec count_nodes = function
+  | T (_, ts) -> 1 + List.fold_left (fun acc elem -> acc + count_nodes elem) 0 ts
+;;
+
+(* Problem 71 *)
+let ipl =
+  let rec ipl_sub len (T (_, sub)) =
+    List.fold_left (fun acc t -> acc + ipl_sub (len + 1) t) len sub
+  in
+  ipl_sub 0
+;;
+
+(* Problem 72 *)
+let rec bottom_up = function
+  | T (v, sub) -> List.fold_right (fun t acc -> bottom_up t @ acc) sub [] @ [ v ]
+;;
+
+(* Problem 73 *)
+let lispy t =
+  let rec aux = function
+    | T (v, sub) ->
+      (match sub with
+       | [] -> " " ^ String.make 1 v
+       | _ ->
+         " "
+         ^ "("
+         ^ String.make 1 v
+         ^ List.fold_right (fun t acc -> aux t ^ acc) sub ""
+         ^ ")")
+  in
+  let s = aux t in
+  if s.[0] = ' ' then String.sub s 1 (String.length s - 1) else s
+;;
+
+(* Problem 80 *)
+type 'a graph_term =
+  { nodes : 'a list
+  ; edges : ('a * 'a) list
+  }
+
+module SS = Set.Make (Char)
+
+let gt_to_hf gt =
+  let nodes = SS.of_list gt.nodes in
+  let rec aux cur_nodes = function
+    | [] ->
+      List.fold_right
+        (fun n acc -> " " ^ String.make 1 n ^ acc)
+        (List.of_seq (SS.to_seq (SS.diff nodes cur_nodes)))
+        ""
+    | (n1, n2) :: t ->
+      " "
+      ^ String.make 1 n1
+      ^ "-"
+      ^ String.make 1 n2
+      ^ aux (SS.add n2 (SS.add n1 cur_nodes)) t
+  in
+  let s = aux SS.empty gt.edges in
+  String.sub s 1 (String.length s - 1)
+;;
+
+let hf_to_gt hf =
+  let set_to_list s = List.of_seq (SS.to_seq s) in
+  let rec aux nodes idx edges =
+    if idx >= String.length hf
+    then { nodes = set_to_list nodes; edges }
+    else (
+      let n = hf.[idx] in
+      if idx + 1 >= String.length hf
+      then { nodes = set_to_list (SS.add n nodes); edges }
+      else if hf.[idx + 1] = ' '
+      then aux (SS.add n nodes) (idx + 2) edges
+      else if hf.[idx + 1] = '-'
+      then (
+        let n' = hf.[idx + 2] in
+        aux (SS.add n' nodes) (idx + 4) ((n, n') :: edges))
+      else raise (Failure (Printf.sprintf "Invalid token: %c" hf.[idx + 1])))
+  in
+  aux SS.empty 0 []
+;;
+
 (* TESTING *)
 let () =
   let _ = assert (last [ "a"; "b"; "c"; "d" ] = Some "d") in
@@ -1111,26 +1193,33 @@ let () =
           , Node ('b', Node ('d', Empty, Empty), Node ('e', Empty, Empty))
           , Node ('c', Empty, Node ('f', Node ('g', Empty, Empty), Empty)) ))
   in
-  let _ =
-    assert (
-      string_of_mult_tree
-        (T
-           ( 'a'
-           , [ T ('f', [ T ('g', []) ])
-             ; T ('c', [])
-             ; T ('b', [ T ('d', []); T ('e', []) ])
-             ] ))
-      = "afg^^c^bd^e^^^")
+  let mt =
+    T
+      ( 'a'
+      , [ T ('f', [ T ('g', []) ]); T ('c', []); T ('b', [ T ('d', []); T ('e', []) ]) ]
+      )
   in
+  let _ = assert (string_of_mult_tree mt = "afg^^c^bd^e^^^") in
+  let _ = assert (mult_tree_of_string "afg^^c^bd^e^^^" = mt) in
+  let _ = assert (count_nodes (T ('a', [ T ('f', []) ])) = 2) in
+  let _ = assert (ipl mt = 9) in
+  let _ = assert (bottom_up (T ('a', [ T ('b', []) ])) = [ 'b'; 'a' ]) in
+  let _ = assert (bottom_up mt = [ 'g'; 'f'; 'c'; 'd'; 'e'; 'b'; 'a' ]) in
+  let _ = assert (lispy (T ('a', [])) = "a") in
+  let _ = assert (lispy (T ('a', [ T ('b', []) ])) = "(a b)") in
+  let _ = assert (lispy mt = "(a (f g) c (b d e))") in
+  let example_graph =
+    { nodes = [ 'b'; 'c'; 'd'; 'f'; 'g'; 'h'; 'k' ]
+    ; edges = [ 'h', 'g'; 'k', 'f'; 'f', 'b'; 'f', 'c'; 'c', 'b' ]
+    }
+  in
+  let _ = assert (gt_to_hf example_graph = "h-g k-f f-b f-c c-b d") in
   let _ =
     assert (
-      mult_tree_of_string "afg^^c^bd^e^^^"
-      = T
-          ( 'a'
-          , [ T ('f', [ T ('g', []) ])
-            ; T ('c', [])
-            ; T ('b', [ T ('d', []); T ('e', []) ])
-            ] ))
+      hf_to_gt "b-c f-c g-h d f-b k-f h-g"
+      = { nodes = [ 'b'; 'c'; 'd'; 'f'; 'g'; 'h' ]
+        ; edges = [ 'h', 'g'; 'k', 'f'; 'f', 'b'; 'g', 'h'; 'f', 'c'; 'b', 'c' ]
+        })
   in
   ()
 ;;
