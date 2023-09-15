@@ -746,6 +746,41 @@ let hf_to_gt hf =
   aux SS.empty 0 []
 ;;
 
+(* Problem 81 *)
+let rec neighbors node = function
+  | [] -> []
+  | (n, n') :: t ->
+    if n = node
+    then n' :: neighbors node t
+    else if n' = node
+    then n :: neighbors node t
+    else neighbors node t
+;;
+
+let paths graph start_node end_node =
+  let rec build_paths visited node =
+    if SS.mem node visited
+    then []
+    else if node = end_node
+    then [ [ node ] ]
+    else (
+      let next_nodes = neighbors node graph.edges in
+      let visited = SS.add node visited in
+      List.fold_left
+        (fun acc n -> List.map (fun p -> node :: p) (build_paths visited n) @ acc)
+        []
+        next_nodes)
+  in
+  build_paths SS.empty start_node
+;;
+
+(* Problem 82 *)
+let cycles graph node =
+  let next_nodes = neighbors node graph.edges in
+  let p = List.concat_map (fun n -> paths graph n node) next_nodes in
+  List.map (fun p -> [ node ] @ p) p
+;;
+
 (* TESTING *)
 let () =
   let _ = assert (last [ "a"; "b"; "c"; "d" ] = Some "d") in
@@ -1220,6 +1255,17 @@ let () =
       = { nodes = [ 'b'; 'c'; 'd'; 'f'; 'g'; 'h' ]
         ; edges = [ 'h', 'g'; 'k', 'f'; 'f', 'b'; 'g', 'h'; 'f', 'c'; 'b', 'c' ]
         })
+  in
+  let _ = assert (paths example_graph 'f' 'b' = [ [ 'f'; 'c'; 'b' ]; [ 'f'; 'b' ] ]) in
+  let _ =
+    assert (
+      cycles example_graph 'f'
+      = [ [ 'f'; 'k'; 'f' ]
+        ; [ 'f'; 'b'; 'c'; 'f' ]
+        ; [ 'f'; 'b'; 'f' ]
+        ; [ 'f'; 'c'; 'b'; 'f' ]
+        ; [ 'f'; 'c'; 'f' ]
+        ])
   in
   ()
 ;;
